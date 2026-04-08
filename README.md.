@@ -1,0 +1,18 @@
+# Emergency Medical Services Unit Database (2026)
+
+This project is a database system designed to manage Emergency Medical Services (EMS)
+units, ambulances, staff, and emergency incidents efficiently.
+
+## 📌 Project Overview
+The Emergency Medical Services Unit Database aims to support EMS operations by organizing
+data related to emergency calls, response times, ambulance deployment, and medical staff
+assignments in a structured database.
+
+## 🎯 Objectives
+- Manage EMS units and ambulances
+- Track emergency calls and incidents
+- Record response times
+- Organize EMS staff assignments
+- Support data analysis and reporting
+
+## 🗂️ Project Structure
