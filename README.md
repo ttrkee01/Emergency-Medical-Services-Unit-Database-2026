@@ -1,50 +1,56 @@
+
+
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KSUMC — لوحة الأداء التشغيلي 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --kb:#0084BD;--kb-dk:#005f8a;--kb-lt:#e6f4fb;--kb-mid:#3BAAD4;
   --kc:#E3E0D2;--kg:#748995;--kg-lt:#f0f2f3;
   --text:#1a1a1a;--text2:#4a5568;--text3:#748995;
-  --bg:#f4f5f7;--card:#fff;--border:#dde3e8;
-  --r:10px;--sh:0 1px 6px rgba(0,132,189,.08);
-  --green:#22c55e;--green-lt:#dcfce7;
+  --bg:#f2f4f7;--card:#fff;--border:#dde3e8;
+  --r:10px;--sh:0 2px 8px rgba(0,132,189,.09);
   --red:#ef4444;--red-lt:#fee2e2;
-  --orange:#f97316;--orange-lt:#ffedd5;
-  --purple:#8b5cf6;--purple-lt:#ede9fe;
+  --green:#16a34a;--green-lt:#dcfce7;
+  --orange:#ea580c;--orange-lt:#ffedd5;
+  --purple:#7c3aed;--purple-lt:#ede9fe;
   --teal:#0d9488;--teal-lt:#ccfbf1;
-  --amber:#f59e0b;--amber-lt:#fef3c7;
-  --emerald:#10b981;--emerald-lt:#d1fae5;
+  --amber:#d97706;--amber-lt:#fef3c7;
+  --emerald:#059669;--emerald-lt:#d1fae5;
 }
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);direction:rtl;min-height:100vh}
+[dir=ltr]{font-family:'Inter',sans-serif}
+[dir=rtl]{font-family:'Cairo',sans-serif}
+body{background:var(--bg);color:var(--text);min-height:100vh;direction:rtl}
+[dir=ltr] body{direction:ltr}
+
+/* ── STRIPE ── */
 .stripe{height:4px;background:linear-gradient(90deg,#005f8a,#0084BD,#3BAAD4,#E3E0D2)}
-.header{background:linear-gradient(135deg,#005f8a 0%,#0084BD 65%,#3BAAD4 100%);color:#fff;padding:0 20px;position:sticky;top:0;z-index:200;box-shadow:0 3px 16px rgba(0,100,160,.22)}
-.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;flex-wrap:wrap;gap:8px}
+
+/* ── HEADER ── */
+.header{background:linear-gradient(135deg,#004d73 0%,#0084BD 55%,#3BAAD4 100%);color:#fff;padding:0 20px;position:sticky;top:0;z-index:300;box-shadow:0 4px 20px rgba(0,80,140,.28)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:11px 0 8px;flex-wrap:wrap;gap:8px}
 .hdr-logo{display:flex;align-items:center;gap:12px}
-.shield{width:46px;height:56px;background:rgba(255,255,255,.15);border-radius:4px 4px 23px 23px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.3);flex-shrink:0}
-.lt1{font-size:15px;font-weight:800;color:#fff}
+.shield{width:48px;height:58px;background:rgba(255,255,255,.14);border-radius:4px 4px 24px 24px;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.32);flex-shrink:0}
+.lt1{font-size:15px;font-weight:800;color:#fff;line-height:1.2}
 .lt2{font-size:10px;color:rgba(255,255,255,.75);font-weight:500}
-.lt3{font-size:9px;color:rgba(255,255,255,.6)}
-.hdr-yr{text-align:center}
-.hdr-yr .y{font-size:24px;font-weight:800;color:#fff;line-height:1}
-.hdr-yr .ys{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px}
-.hdr-acts{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.abtn{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:20px;font-family:'Cairo',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px}
-.abtn:hover{background:rgba(255,255,255,.28)}
-.abtn-icon{width:14px;height:14px;fill:currentColor}
-.nav{display:flex;gap:1px;padding-bottom:0;overflow-x:auto}
-.nb{padding:8px 13px;font-family:'Cairo',sans-serif;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.65);background:transparent;border:none;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;transition:all .18s}
-.nb.active,.nb:hover{color:#fff;border-bottom-color:#fff}
-.main{max-width:1400px;margin:0 auto;padding:18px 16px}
-.page{display:none}.page.active{display:block}
-.ebanner{background:#fff;border:1.5px dashed var(--kb);border-radius:var(--r);padding:10px 15px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ebanner .es{font-size:12px;color:var(--text2)}
+.lt3{font-size:9px;color:rgba(255,255,255,.6);font-family:'Inter',sans-serif}
+.hdr-center{text-align:center}
+.hdr-center .yr{font-size:26px;font-weight:900;color:#fff;line-height:1}
+.hdr-center .ys{font-size:10px;color:rgba(255,255,255,.7)}
+.hdr-acts{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.abtn{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.28);color:#fff;padding:6px 11px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.abtn:hover{background:rgba(255,255,255,.26)}
+.abtn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
+.abtn-admin{background:rgba(255,200,0,.18);border-color:rgba(255,200,0,.4)}
+.abtn-admin.active{background:rgba(255,200,0,.3);border-color:gold}
+.lang-sel{background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.28);color:#fff;padding:5px 10px;border-radius:18px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Cairo',sans-serif;appearance:none;-webkit-appearance:none}
+.lang-sel option{color:#1a1a1a;background:#fff}
 
 /* ── NAV ── */
 .nav{display:flex;gap:1px;overflow-x:auto;padding-bottom:1px;scrollbar-width:none}
